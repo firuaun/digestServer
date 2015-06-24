@@ -13,6 +13,7 @@ var SqsCommand = {
             QueueUrl: url,
             MaxNumberOfMessages: 1,
             VisibilityTimeout: 5,
+            WaitTimeSeconds: 5,
             MessageAttributeNames:attrNames || []
         };
         queue.receiveMessage(params,callback);
@@ -26,11 +27,11 @@ var SqsCommand = {
     },
     pop: function(queue,url,callback,attrNames){
         SqsCommand.receive(queue,url,function(err,messageData){
-            console.log(err,messageData);
-            if(err) console.log(err);
+            if(err) console.log("POP(RECIEVE) ERROR:",err);
             else {
+                messageData = messageData.Messages[0];
                 SqsCommand.delete(queue,url,messageData.MessageId,function(err,data){
-                    if(err) console.log(err);
+                    if(err) console.log("POP(DELETE) ERROR:",err);
                     callback(err,messageData,data);
                 });
             }
@@ -38,5 +39,31 @@ var SqsCommand = {
     }
 };
 
-module.exports = SqsCommand;
+function values(obj) {
+  var arr = [];
+  Object.keys(obj).forEach(function(e){
+    arr.push(obj[e]);
+  });
+  return arr;
+}
+
+var SQSQueue = function(){
+    (function(sqs,url){
+        this.sqs = sqs;
+        this.url = url;
+    }).apply(this,arguments);
+};
+
+Object.keys(SqsCommand).forEach(function(method){
+    SQSQueue.prototype[method] = function(){
+        var args = values(arguments);
+        args.unshift(this.url);
+        args.unshift(this.sqs);
+        SqsCommand[method].apply(this, args);
+    };
+});
+
+exports.SqsCommand = SqsCommand;
+exports.SQSQueue = SQSQueue;
+
 
