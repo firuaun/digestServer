@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+- '0.11'
+- '0.10'
+deploy:
+  provider: s3
+  access_key_id: AKIAIAEWDAFS4X6S52OQ
+  secret_access_key:
+    secure: CInGLp00B3eHP/Q40HrWsF2CGy5u5wZ5bvnJFVmMtlKwdyc7y/so/d8B7HxMaLS3jvBeDcJCQ1gP/PSmFDof09mSdogSjVlvPkLTTWH0LAEcRSXZ0osmZ8hoUTo6uI5mi3cHNmwoZuNDWuUBcq9zngxeVARP6OWFnvGZWCZX/Hxag0XSLj3F9Wyoz7FWbn9DHzkG3N3McxTjVytavh1cg85yr1BSpJFeu2D2Jv0qdHldiEycPlVeBHEQxOIF7Yg4DzfnHickNH/x2LVmg4VH9knTGYJ6QeHKUGg41eOkf/uyfVawGiEhFaqEJQZa6jVdYOC3rW6Jc5lyXZCgkd0fqHhcfgR5RAuMhcqUggGty4sZ6Flwo91o4L9X3imH7DkuBuaSZ/UhxiUUA2ovj+AIyXXArvA0xxxCRQCPlC6bUMpqiQZ4zya2XuBiQ1Tx/hDlObEXvqaEETf+GPYHH5jssiTVON8dC700LK9VB4MLcB816lp2Zrghujfd2wLI71rNeWp+E53vm9kiuYgHpvuLMOgkmVs01ZBQ/Bn7DRhH7o/9oeHxWWyrc9TpgZodLwmvqXzkOmGjLRmHRetbLAXUnKsSPx5ZR1klLuR7dK/tpYCKYX2R5gD7NdfI1HBDTb7fLwQfgpQ+H7xlP7FLZdPbC1AylRCjmks40sqCodNV2SQ=
+  bucket: deploy-weeia
+  upload-dir: grzyb_worker
+  acl: public_read
+  on:
+    repo: firuaun/digestServer
