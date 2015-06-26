@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "async": "^0.7.0",
+    "async-waterfall": "^0.1.5",
     "aws-sdk": "^2.0.0-rc13",
     "get-pixels": "^3.2.2",
     "gm": "^1.18.1"

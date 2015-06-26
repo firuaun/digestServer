@@ -29,8 +29,18 @@ NoSQL.prototype.put = function(itemName,attributes,callback){
 	    ItemName: itemName,
 	    Attributes: attributes
 	},function(err,data){
-		callback(data);
+		callback(err,data);
 	});
 };
+
+NoSQL.prototype.get = function(itemName,callback){
+	this.simpledb.getAttributes({
+	    DomainName: this.domainName.DomainName,
+	    ItemName: itemName
+	},function(err,data){
+		callback(err,data);
+	});
+};
+
 
 module.exports = NoSQL;

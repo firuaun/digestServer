@@ -30,8 +30,7 @@ var SqsCommand = {
             if(err) console.log("POP(RECIEVE) ERROR:",err);
             else {
                 if(!messageData.Messages) {
-                    console.info("brak wiadomosci");
-                    return callback(null,false);
+                    return callback(new Error("No new messages"),null);
                 }
                 messageData = messageData.Messages[0];
                 SqsCommand.delete(queue,url,messageData.ReceiptHandle,function(err,data){
