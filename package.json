@@ -1,18 +1,27 @@
 {
   "name": "digestServer",
-  "version": "0.0.0",
+  "version": "0.0.5",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
-  "author": "Radek Adamus <adamusr@gmail.com> (https://github.com/radamus/)",
+  "repository": {
+    "type": "git",
+    "url": "https://firuaun%40gmail.com@github.com/firuaun/digestServer.git"
+  },
+  "author": "Rafał Grzyb <firuaun@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "async": "^0.7.0",
     "async-waterfall": "^0.1.5",
     "aws-sdk": "^2.0.0-rc13",
     "get-pixels": "^3.2.2",
-    "gm": "^1.18.1"
-  }
+    "gm": "^1.18.1",
+    "mocha": "^2.2.5"
+  },
+  "bugs": {
+    "url": "https://github.com/firuaun/digestServer/issues"
+  },
+  "homepage": "https://github.com/firuaun/digestServer"
 }
